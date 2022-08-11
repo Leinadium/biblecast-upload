@@ -1,6 +1,20 @@
+{% set fullscreen=True %}
+
 {% extends "base.html" %}
 {% block title %}Teste{% endblock %}
 
 {% block content %}
-abcd
+    <p>aaa bbb ccc</p>
+    <form>
+        <div class="mb-3">
+            <label for="inputUser" class="form-label">Usuário</label>
+            <input type="text" class="form-control" id="inputUser" name="usuario">
+            <div id="userHelp" class="form-text">Nome da igreja</div>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="inputPassword" name="senha">
+        </div>
+    <button type="submit" class="btn btn-primary">Acessar</button>
+    </form>
 {% endblock %}
