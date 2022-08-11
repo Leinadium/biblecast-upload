@@ -1,0 +1,37 @@
+{
+  "igrejaX": {
+    "series": [
+      "serie-igrejaX-1",
+      "serie-igrejaX-2",
+      "serie-igrejaX-3"
+    ],
+    "pastores": [
+      "pastor-igrejaX-1",
+      "pastor-igrejaX-2",
+      "pastor-igrejaX-3"
+    ],
+    "slug": "igr-x",
+    "chave": "123",
+    "telefone": [
+      "0123456789"
+    ]
+  },
+  "igrejaY": {
+    "series": [
+      "serie-igrejaY-1",
+      "serie-igrejaY-2",
+      "serie-igrejaY-3",
+      "serie-igrejaY-4"
+    ],
+    "pastores": [
+      "pastor-igrejaY-1",
+      "pastor-igrejaY-2"
+    ],
+    "slug": "igr-y",
+    "chave": "456",
+    "telefone": [
+      "0123456789",
+      "9876543210"
+    ]
+  }
+}
