@@ -6,7 +6,7 @@
 |------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Igreja     | Igreja da publicação        | Dropdown list, conforme arquivo de configuração                                                                                     |
 | URL        | URL do vídeo                | http ou https no início                                                                                                             |
-| Data       | Data da mensagem            | Se posśivel abrir um calendário para escolha                                                                                        |
+| Data       | Data da mensagem            | Se possível abrir um calendário para escolha                                                                                        |
 | Turno      | Manhã/Tarde/Noite           | Campo opcional. Valores: "M, M1, M2, T, T1, T2, N, N1, N2, outro".<br/> No caso de outros, abrir uma opção para 2 caracteres        |
 | Título     | Título da mensagem          | Sem validação                                                                                                                       |
 | Pregador   | Nome do pregador            | Dropdown list, de acordo com a igreja, conforme arquivo de configuração.<br/>Pode existir opção de "outros", que abre um novo campo |
@@ -17,7 +17,7 @@
 | Fade out   | Opção de fade-out no áudio  | Check-box. Aparece quando o campo FIM é preenchido                                                                                  |
 | Comentário | Texto bíblico ou comentário | Opcional                                                                                                                            |
 
-Também deve haver um campo de senh/chave no formulário, a senha é por igreja, baseada em arquivo de configuração.
+Também deve haver um campo de senha/chave no formulário, a senha é por igreja, baseada em arquivo de configuração.
 
 ## Arquivo de saída
 

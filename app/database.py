@@ -54,4 +54,18 @@ class Database:
         """Retorna o nome da igreja a partir da chave"""
         return self._chaves_invertidas.get(chave)
 
+    def get_pastores(self, chave: str) -> Optional[List[str]]:
+        """Retorna os pastores da igreja a partir da chave"""
+        return self._pastores.get(chave)
 
+    def get_series(self, chave: str) -> Optional[List[str]]:
+        """Retorna as series da igreja a partir da chave"""
+        return self._series.get(chave)
+
+    def get_slug(self, chave: str) -> Optional[str]:
+        """Retorna o slug daquela igreja"""
+        return self._slugs.get(chave)
+
+    def get_telefones(self, chave: str) -> Optional[List[str]]:
+        """Retorna os telefones daquela igreja"""
+        return self._telefones.get(chave)

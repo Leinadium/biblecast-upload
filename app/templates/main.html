@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block style %}
+<style>
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Igreja selecionada: <span>{{ igreja }}</span>
+        <br>
+        <a href="/auth?reset=1">Clique aqui para alterar a igreja</a>
+    </p>
+
+
+    <form method="post" class="formulario">
+        <div>
+            <label for="inputURL">URL</label>
+            <input type="url" id="inputURL" name="url">
+        </div>
+
+        <div>
+            <label for="inputData">Data</label>
+            <input type="date" id="inputData" name="data">
+        </div>
+
+        <div>
+            <div>
+                <label for="inputTurno">Turno</label>
+                <select name="turno" id="inputTurno" onchange="checkAlt('inputTurno', 'divTurnoAlt')">
+                    <option value="M">Manhã</option>
+                    <option value="M1">Manhã 1</option>
+                    <option value="M2">Manhã 2</option>
+                    <option value="T">Tarde</option>
+                    <option value="T1">Tarde 1</option>
+                    <option value="T2">Tarde 2</option>
+                    <option value="N">Noite</option>
+                    <option value="N1">Noite 1</option>
+                    <option value="N2">Noite 2</option>
+                    <option value="-">Outro</option>
+                </select>
+            </div>
+            <div style="display: none" id="divTurnoAlt">
+                <label for="inputTurnoAlt">Turno Alt</label>
+                <input type="text" id="inputTurnoAlt" name="turnoAlt">
+            </div>
+        </div>
+
+        <div>
+            <label for="inputTitulo">Título</label>
+            <input type="text" id="inputTitulo" name="titulo">
+        </div>
+
+        <div>
+            <div>
+                <label for="inputPregador">Pregador</label>
+                <select id="inputPregador" name="pregador" onchange="checkAlt('inputPregador', 'divPregadorAlt')">
+                    {% for pregador in pregadores %}
+                        <option value="{{ pregador }}">{{ pregador }}</option>
+                    {% endfor %}
+                    <option value="-">Outro</option>
+                </select>
+            </div>
+            <div id="divPregadorAlt" style="display: none">
+                <label for="inputPregadorAlt">Outro pregador</label>
+                <input type="text" id="inputPregadorAlt" name="pregadorAlt">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="inputSerie">Série</label>
+                <select id="inputSerie" name="serie" onchange="checkAlt('inputSerie', 'divSerieAlt')">
+                    {% for serie in series %}
+                        <option value="{{ serie }}">{{ serie }}</option>
+                    {% endfor %}
+                    <option value="-">Outro</option>
+                </select>
+            </div>
+            <div id="divSerieAlt" style="display: none">
+                <label for="inputSerieAlt">Outra série</label>
+                <input type="text" id="inputSerieAlt" name="serieAlt">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="inputInicio">Inicio da mensagem</label>
+                <input type="text" id="inputInicio" name="inicio" onchange="checkCheck('inputInicio', 'divFadeIn')" value="hh:mm:ss">
+            </div>
+            <div id="divFadeIn" style="display: none">
+                <label for="inputFadeIn">FadeIn</label>
+                <input type="checkbox" id="inputFadeIn" name="fadeIn">
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <label for="inputFim">Fim da mensagem</label>
+                <input type="text" id="inputFim" name="fim" onchange="checkCheck('inputFim', 'divFadeOut')" value="hh:mm:ss">
+            </div>
+            <div id="divFadeOut" style="display: none">
+                <label for="inputFadeOut">FadeOut</label>
+                <input type="checkbox" id="inputFadeOut" name="fadeOut">
+            </div>
+        </div>
+
+        <div>
+            <label for="inputComentario">Comentario</label>
+            <textarea id="inputComentario" name="comentario"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" name="submit">
+        </div>
+
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function checkAlt(select, inputAlt) {
+            let tag_select = document.getElementById(select);
+            let tag_inputAlt = document.getElementById(inputAlt);
+
+            if (tag_select.value === "-") {
+                tag_inputAlt.style.display = "block";
+            } else {
+                tag_inputAlt.style.display = "none";
+            }
+        }
+
+        function checkCheck(input, checkbox) {
+            let tag_input = document.getElementById(input);
+            let tag_check = document.getElementById(checkbox);
+
+            if (tag_input.value !== "") {
+                tag_check.style.display = "block";
+            } else {
+                tag_check.style.display = "none";
+            }
+
+        }
+
+    </script>
+{% endblock %}

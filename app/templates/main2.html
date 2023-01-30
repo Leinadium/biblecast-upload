@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro{% endblock %}
+
+{% block style %}
+<style>
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .erro {
+        color: lightcoral;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <p>
+        Igreja selecionada: <span>{{ igreja }}</span>
+        <br>
+        <a href="/auth?reset=1">Clique aqui para alterar a igreja</a>
+    </p>
+
+    <form method="post" class="formulario">
+        {% if form.errors %}
+            <span style="color: red">Formulário invalido</span>
+            {% for field, errors in form.errors.items() %}
+            <div class="erro">
+                {{ form[field].label }}: <strong>{{ ', '.join(errors) }}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.url.label }}{{ form.url() }}
+        </div>
+
+        <div>
+            {{ form.data.label }}{{ form.data() }}
+        </div>
+
+
+        <div>   <!-- turno -->
+            <div>
+                {{ form.turno.label }}
+                {{ form.turno(id='inputTurno', onchange="checkAlt('inputTurno', 'divTurnoAlt')") }}
+            </div>
+            <div style="display: none" id="divTurnoAlt">
+                {{ form.turno_alt.label }}
+                {{ form.turno_alt() }}
+            </div>
+        </div>
+
+        <div>
+            {{ form.titulo.label }}{{ form.titulo() }}
+        </div>
+
+        <div>   <!-- pregador -->
+            <div>
+                {{ form.pregador.label }}
+                {{ form.pregador(id='inputPregador', onchange="checkAlt('inputPregador', 'divPregadorAlt')") }}
+            </div>
+            <div id="divPregadorAlt">
+                {{ form.pregador_alt.label }}
+                {{ form.pregador_alt() }}
+            </div>
+        </div>
+
+        <div>   <!-- serie -->
+            <div>
+                {{ form.serie.label }}
+                {{ form.serie(id='inputSerie', onchange="checkAlt('inputSerie', 'divSerieAlt')") }}
+            </div>
+            <div id="divSerieAlt">
+                {{ form.serie_alt.label }}
+                {{ form.serie_alt() }}
+            </div>
+        </div>
+
+        <div>   <!-- inicio -->
+            <div>
+                {{ form.inicio.label }}
+                {{ form.inicio(id='inputInicio', onchange="checkCheck('inputInicio', 'divFadeIn')", value="hh:mm:ss") }}
+            </div>
+            <div style="display: none" id="divFadeIn">
+                {{ form.fade_in.label }}
+                {{ form.fade_in() }}
+            </div>
+        </div>
+
+        <div>   <!-- fim -->
+            <div>
+                {{ form.fim.label }}
+                {{ form.fim(id='inputFim', onchange="checkCheck('inputFim', 'divFadeOut')", value="hh:mm:ss") }}
+            </div>
+            <div style="display: none" id="divFadeOut">
+                {{ form.fade_out.label }}
+                {{ form.fade_out() }}
+            </div>
+        </div>
+
+        <div>
+            {{ form.comentario.label }}{{ form.comentario() }}
+        </div>
+
+        <div>
+            {{ form.submit() }}
+        </div>
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        function checkAlt(select, inputAlt) {
+            let tag_select = document.getElementById(select);
+            let tag_inputAlt = document.getElementById(inputAlt);
+
+            if (tag_select.value === "-") {
+                tag_inputAlt.style.display = "block";
+            } else {
+                tag_inputAlt.style.display = "none";
+            }
+        }
+
+        function checkCheck(input, checkbox) {
+            let tag_input = document.getElementById(input);
+            let tag_check = document.getElementById(checkbox);
+
+            if (tag_input.value !== "") {
+                tag_check.style.display = "block";
+            } else {
+                tag_check.style.display = "none";
+            }
+
+        }
+
+    </script>
+{% endblock %}
